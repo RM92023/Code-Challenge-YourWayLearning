@@ -6,6 +6,8 @@ export const useTypingTest = (targetText: string) => {
   const [input, setInput] = useState("");
   const [words, setWords] = useState(wordsArray);
   const [isFinished, setIsFinished] = useState(false);
+  const [isStarted, setIsStarted] = useState(false);
+
 
   const onInputChange = (value: string) => {
     setInput(value.trim());
@@ -18,12 +20,17 @@ export const useTypingTest = (targetText: string) => {
     if (words.length === 1 && value.trim() === words[0]) {
       setIsFinished(true);
     }
+
+    if (!isStarted) {
+      setIsStarted(true);
+    }
   };
 
   const reset = () => {
     setInput("");
     setWords(wordsArray);
     setIsFinished(false);
+    setIsStarted(false);
   }
 
   return {
@@ -31,6 +38,7 @@ export const useTypingTest = (targetText: string) => {
     onInputChange,
     words,
     isFinished,
+    isStarted,
     reset
   };
 };
