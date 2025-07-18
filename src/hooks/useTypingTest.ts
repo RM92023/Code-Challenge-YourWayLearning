@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState } from "react";
+import { useTimer } from "./useTimer";
 
 export const useTypingTest = (targetText: string) => {
   const wordsArray = targetText.split(" ");
@@ -7,22 +8,32 @@ export const useTypingTest = (targetText: string) => {
   const [words, setWords] = useState(wordsArray);
   const [isFinished, setIsFinished] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
+  const [wpm, setWpm] = useState<number | null>(null);
 
+  const {
+    getElapsedTimeInMinutes,
+    reset: resetTimer,
+  } = useTimer(isStarted);
 
   const onInputChange = (value: string) => {
+    if (!isStarted) {
+      setIsStarted(true);
+    }
+
     setInput(value.trim());
 
     if (value.trim() === words[0]) {
       setInput("");
-      setWords(prev => prev.slice(1));
+      setWords((prev) => prev.slice(1));
     }
 
     if (words.length === 1 && value.trim() === words[0]) {
       setIsFinished(true);
-    }
 
-    if (!isStarted) {
-      setIsStarted(true);
+      const minutes = getElapsedTimeInMinutes();
+      const charsTyped = targetText.length;
+      const calculatedWPM = Math.floor((charsTyped / 5) / minutes);
+      setWpm(calculatedWPM);
     }
   };
 
@@ -31,7 +42,9 @@ export const useTypingTest = (targetText: string) => {
     setWords(wordsArray);
     setIsFinished(false);
     setIsStarted(false);
-  }
+    setWpm(null);
+    resetTimer();
+  };
 
   return {
     input,
@@ -39,6 +52,7 @@ export const useTypingTest = (targetText: string) => {
     words,
     isFinished,
     isStarted,
-    reset
+    reset,
+    wpm,
   };
 };
