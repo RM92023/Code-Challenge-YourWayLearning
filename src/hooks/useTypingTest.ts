@@ -20,10 +20,17 @@ export const useTypingTest = (targetText: string) => {
     }
   };
 
+  const reset = () => {
+    setInput("");
+    setWords(wordsArray);
+    setIsFinished(false);
+  }
+
   return {
     input,
     onInputChange,
     words,
     isFinished,
+    reset
   };
 };
