@@ -4,7 +4,7 @@ import "./App.css";
 import ControlButtons from "./components/ControlButtons";
 
 const App = () => {
-  const { input, onInputChange, words, isFinished, reset } = useTypingTest("This is the sentence to type");
+  const { input, onInputChange, words, isFinished, isStarted, reset } = useTypingTest("This is the sentence to type");
 
   return (
     <main className="App">
@@ -20,7 +20,7 @@ const App = () => {
         onChange={onInputChange}
         isFinished={isFinished}
       />
-      <ControlButtons onReset={reset} isFinished={isFinished} />
+      <ControlButtons onReset={reset} isFinished={isFinished} isStarted={isStarted} />
     </main>
   );
 };
