@@ -1,5 +1,5 @@
 interface Props {
-  targetText: string;
+  targetText?: string;
   userInput: string;
 }
 
@@ -11,6 +11,8 @@ const TextDisplay = ({ targetText = "", userInput }: Props) => {
 
         if (index < userInput.length) {
           className = userInput[index] === char ? "correct" : "incorrect";
+        } else if (index === userInput.length) {
+          className = "next-char";
         }
 
         return (

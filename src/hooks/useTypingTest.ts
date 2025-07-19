@@ -9,6 +9,8 @@ export const useTypingTest = (targetText: string) => {
   const [isFinished, setIsFinished] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
   const [wpm, setWpm] = useState<number | null>(null);
+  const [accuracy, setAccuracy] = useState<number | null>(null);
+
 
   const {
     getElapsedTimeInMinutes,
