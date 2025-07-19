@@ -58,3 +58,18 @@ code {
 .control-buttons {
   margin-top: 20px;
 }
+
+.text-display {
+  font-size: 1.2rem;
+  font-family: monospace;
+  white-space: pre-wrap;
+  margin-bottom: 1rem;
+}
+
+.correct {
+  color: #93C43F;
+}
+
+.incorrect {
+  color: #F25151;
+}
