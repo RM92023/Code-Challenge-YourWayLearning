@@ -3,6 +3,7 @@ import { useTypingTest } from "./hooks/useTypingTest";
 import ControlButtons from "./components/ControlButtons";
 import "./App.css";
 import TextDisplay from "./components/TextDisplay";
+import calculateScore from "./utils/calculateScore";
 
 const App = () => {
   const {
@@ -14,7 +15,18 @@ const App = () => {
     reset,
     wpm,
     accuracyReal,
+    corrections,
   } = useTypingTest("This is the sentence to type");
+
+  const score =
+    isFinished && wpm && accuracyReal
+      ? calculateScore(
+          wpm,
+          input.trim().split(" ").length,
+          accuracyReal / 100,
+          corrections
+        )
+      : null;
 
   return (
     <main className="App">
@@ -31,6 +43,9 @@ const App = () => {
             </p>
             <p className="text-md">
               Precisión: <strong>{accuracyReal}%</strong>
+            </p>
+            <p className="text-md">
+              Puntuación: <strong>{score}</strong>
             </p>
           </div>
         )}
