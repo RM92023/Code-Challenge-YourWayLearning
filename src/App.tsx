@@ -13,6 +13,7 @@ const App = () => {
     isStarted,
     reset,
     wpm,
+    accuracyReal,
   } = useTypingTest("This is the sentence to type");
 
   return (
@@ -20,15 +21,26 @@ const App = () => {
       <h1>Typing Speed Test</h1>
 
       <h3>
-        {isFinished
-          ? `Test Completed! WPM: ${wpm}`
-          : "Type the following:"}
+        {isFinished && (
+          <div className="mt-4 text-center">
+            <p className="text-lg font-semibold text-green-600">
+              Test finalizado
+            </p>
+            <p className="text-md">
+              WPM: <strong>{wpm}</strong>
+            </p>
+            <p className="text-md">
+              Precisión: <strong>{accuracyReal}%</strong>
+            </p>
+          </div>
+        )}
       </h3>
 
-      <p>{words.length > 0 && (
-  <TextDisplay targetText={words[0]} userInput={input} />
-)}
-</p>
+      <div>
+        {words.length > 0 && (
+          <TextDisplay targetText={words[0]} userInput={input} />
+        )}
+      </div>
 
       <TypingInput
         input={input}
