@@ -2,6 +2,7 @@ import TypingInput from "./components/TypingInput";
 import { useTypingTest } from "./hooks/useTypingTest";
 import ControlButtons from "./components/ControlButtons";
 import "./App.css";
+import TextDisplay from "./components/TextDisplay";
 
 const App = () => {
   const {
@@ -24,7 +25,10 @@ const App = () => {
           : "Type the following:"}
       </h3>
 
-      <p>{words.join(" ")}</p>
+      <p>{words.length > 0 && (
+  <TextDisplay targetText={words[0]} userInput={input} />
+)}
+</p>
 
       <TypingInput
         input={input}
