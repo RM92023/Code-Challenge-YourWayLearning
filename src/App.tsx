@@ -10,7 +10,9 @@ import TopScores from "./components/TopScores/TopScores";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// Componente principal que organiza y renderiza toda la aplicación
 const App = () => {
+  // Hook que contiene la lógica principal del test
   const {
     input,
     onInputChange,
@@ -27,6 +29,7 @@ const App = () => {
   const [showModal, setShowModal] = useState(false);
   const [scoreSaved, setScoreSaved] = useState(false);
 
+  // Calcula el puntaje final una vez que termina el test
   const score =
     isFinished && wpm && accuracyReal
       ? calculateScore(
@@ -37,6 +40,7 @@ const App = () => {
         )
       : null;
 
+  // Muestra el modal cuando el test termina y el puntaje aún no ha sido guardado
   useEffect(() => {
     if (isFinished && wpm && accuracyReal && score && !scoreSaved) {
       setShowModal(true);
@@ -47,6 +51,7 @@ const App = () => {
     <main className="App">
       <h1>Typing Speed Test</h1>
 
+      {/* Resultado final mostrado al terminar el test */}
       <h3>
         {isFinished && (
           <div className="mt-4 text-center">
@@ -66,18 +71,21 @@ const App = () => {
         )}
       </h3>
 
+      {/* Muestra palabra actual y progreso */}
       <div>
         {words.length > 0 && (
           <TextDisplay targetText={words[0]} userInput={input} />
         )}
       </div>
 
+      {/* Input principal de tipeo */}
       <TypingInput
         input={input}
         onChange={onInputChange}
         isFinished={isFinished}
       />
 
+      {/* Botones para reiniciar o cancelar */}
       <ControlButtons
         onReset={() => {
           reset();
@@ -87,6 +95,7 @@ const App = () => {
         isStarted={isStarted}
       />
 
+      {/* Modal para guardar el puntaje */}
       <SaveScoreModal
         open={showModal}
         scoreData={{
@@ -101,7 +110,10 @@ const App = () => {
         }}
       />
 
+      {/* Tabla de mejores puntajes */}
       <TopScores />
+
+      {/* Contenedor de notificaciones */}
       <ToastContainer
         position="top-right"
         autoClose={3000}

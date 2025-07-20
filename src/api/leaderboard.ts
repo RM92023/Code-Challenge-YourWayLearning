@@ -9,6 +9,7 @@ export interface ScoreEntry {
   words: number;
 }
 
+// Guarda el puntaje actual en el leaderboard
 export const saveScore = async (entry: ScoreEntry) => {
   const res = await fetch(`${API_URL}/leaderboard`, {
     method: "POST",
@@ -23,6 +24,7 @@ export const saveScore = async (entry: ScoreEntry) => {
   return res.json();
 };
 
+// Obtiene los 5 mejores puntajes ordenados de mayor a menor
 export const getTopScores = async (): Promise<ScoreEntry[]> => {
   const res = await fetch(`${API_URL}/leaderboard?_sort=score&_order=desc&_limit=5`);
 

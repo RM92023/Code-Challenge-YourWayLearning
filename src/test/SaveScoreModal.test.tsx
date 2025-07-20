@@ -51,13 +51,13 @@ describe("SaveScoreModal", () => {
 
     render(<SaveScoreModal open={true} scoreData={scoreData} onClose={mockOnClose} />);
     fireEvent.change(screen.getByPlaceholderText("Tu nombre"), {
-      target: { value: "Chupi" },
+      target: { value: "Alice" },
     });
     fireEvent.click(screen.getByText("Guardar"));
 
     await waitFor(() => {
       expect(saveScore).toHaveBeenCalledWith({
-        username: "Chupi",
+        username: "Alice",
         ...scoreData,
       });
     });
