@@ -5,6 +5,7 @@ import "./TopScores.css";
 const TopScores = () => {
   const [scores, setScores] = useState<ScoreEntry[]>([]);
 
+  // Al montar el componente, se cargan los mejores puntajes desde la API mock
   useEffect(() => {
     getTopScores()
       .then(setScores)

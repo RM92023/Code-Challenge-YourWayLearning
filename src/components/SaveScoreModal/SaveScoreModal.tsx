@@ -9,6 +9,7 @@ interface Props {
   onClose: () => void;
 }
 
+// Modal para guardar el puntaje del usuario al finalizar el test
 const SaveScoreModal = ({ open, scoreData, onClose }: Props) => {
   const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
