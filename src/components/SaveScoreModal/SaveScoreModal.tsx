@@ -1,5 +1,7 @@
-import { useState } from "react";
-import { saveScore, ScoreEntry } from "../api/leaderboard";
+import { useEffect, useState } from "react";
+import { saveScore, ScoreEntry } from "../../api/leaderboard";
+import "./SaveScoreModal.css";
+import { toast } from "react-toastify";
 
 interface Props {
   open: boolean;
@@ -11,6 +13,13 @@ const SaveScoreModal = ({ open, scoreData, onClose }: Props) => {
   const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (open) {
+      setUsername("");
+      setError("");
+    }
+  }, [open]);
 
   if (!open) return null;
 
@@ -30,9 +39,11 @@ const SaveScoreModal = ({ open, scoreData, onClose }: Props) => {
         words: scoreData.words,
       });
 
+      toast.success("¡Puntaje guardado exitosamente!");
       setLoading(false);
       onClose();
     } catch (err) {
+      toast.error("Ocurrió un error al guardar el puntaje.");
       setError("Error al guardar el puntaje.");
       setLoading(false);
     }

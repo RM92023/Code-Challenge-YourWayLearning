@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { getTopScores, ScoreEntry } from "../api/leaderboard";
+import { getTopScores, ScoreEntry } from "../../api/leaderboard";
+import "./TopScores.css";
 
 const TopScores = () => {
   const [scores, setScores] = useState<ScoreEntry[]>([]);
@@ -12,15 +13,15 @@ const TopScores = () => {
 
   return (
     <section className="leaderboard">
-      <h2>Top 5 Puntajes</h2>
-      <table>
+      <h2 className="leaderboard-title">Top 5 Scores</h2>
+      <table className="leaderboard-table">
         <thead>
           <tr>
-            <th>Pos</th>
-            <th>Nombre</th>
-            <th>Puntaje</th>
+            <th>#</th>
+            <th>Name</th>
+            <th>Score</th>
             <th>WPM</th>
-            <th>Precisión</th>
+            <th>Accuracy</th>
           </tr>
         </thead>
         <tbody>
