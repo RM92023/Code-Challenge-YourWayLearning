@@ -85,5 +85,6 @@ export const useTypingTest = (targetText: string) => {
     accuracyVisual,
     accuracyReal,
     corrections,
+    typedCorrect,
   };
 };

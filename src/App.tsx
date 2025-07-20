@@ -1,9 +1,11 @@
+import { useEffect, useState } from "react";
 import TypingInput from "./components/TypingInput";
 import { useTypingTest } from "./hooks/useTypingTest";
 import ControlButtons from "./components/ControlButtons";
 import "./App.css";
 import TextDisplay from "./components/TextDisplay";
 import calculateScore from "./utils/calculateScore";
+import SaveScoreModal from "./components/SaveScoreModal";
 
 const App = () => {
   const {
@@ -16,7 +18,11 @@ const App = () => {
     wpm,
     accuracyReal,
     corrections,
+    typedCorrect,
   } = useTypingTest("This is the sentence to type");
+
+  const [showModal, setShowModal] = useState(false);
+  const [scoreSaved, setScoreSaved] = useState(false);
 
   const score =
     isFinished && wpm && accuracyReal
@@ -27,6 +33,12 @@ const App = () => {
           corrections
         )
       : null;
+
+  useEffect(() => {
+    if (isFinished && wpm && accuracyReal && score && !scoreSaved) {
+      setShowModal(true);
+    }
+  }, [isFinished, wpm, accuracyReal, score, scoreSaved]);
 
   return (
     <main className="App">
@@ -67,6 +79,20 @@ const App = () => {
         onReset={reset}
         isFinished={isFinished}
         isStarted={isStarted}
+      />
+
+      <SaveScoreModal
+        open={showModal}
+        scoreData={{
+          score: score || 0,
+          accuracy: (accuracyReal || 0) / 100,
+          wpm: wpm || 0,
+          words: typedCorrect.trim().split(" ").length,
+        }}
+        onClose={() => {
+          setShowModal(false);
+          setScoreSaved(true);
+        }}
       />
     </main>
   );
