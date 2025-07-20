@@ -1,3 +1,5 @@
+import "./TypingInput.css";
+
 interface Props {
   input: string;
   onChange: (value: string) => void;

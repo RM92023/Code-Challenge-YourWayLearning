@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import TypingInput from "./components/TypingInput";
+import TypingInput from "./components/TypingInput/TypingInput";
 import { useTypingTest } from "./hooks/useTypingTest";
-import ControlButtons from "./components/ControlButtons";
+import ControlButtons from "./components/ControlButtons/ControlButtons";
 import "./App.css";
-import TextDisplay from "./components/TextDisplay";
+import TextDisplay from "./components/TextDisplay/TextDisplay";
 import calculateScore from "./utils/calculateScore";
-import SaveScoreModal from "./components/SaveScoreModal";
-import TopScores from "./components/TopScores";
+import SaveScoreModal from "./components/SaveScoreModal/SaveScoreModal";
+import TopScores from "./components/TopScores/TopScores";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const {
@@ -77,7 +79,10 @@ const App = () => {
       />
 
       <ControlButtons
-        onReset={reset}
+        onReset={() => {
+          reset();
+          setScoreSaved(false);
+        }}
         isFinished={isFinished}
         isStarted={isStarted}
       />
@@ -97,6 +102,12 @@ const App = () => {
       />
 
       <TopScores />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        pauseOnHover
+        theme="colored"
+      />
     </main>
   );
 };

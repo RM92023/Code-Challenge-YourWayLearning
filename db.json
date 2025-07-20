@@ -1,7 +1,7 @@
 {
   "leaderboard": [
     {
-      "id": 1,
+      "id": "1",
       "username": "Charity",
       "score": 505.1667,
       "accuracy": 1,
@@ -10,7 +10,7 @@
       "words": 25
     },
     {
-      "id": 2,
+      "id": "2",
       "username": "Kim",
       "score": 919.0662,
       "accuracy": 0.98,
@@ -19,7 +19,7 @@
       "words": 112
     },
     {
-      "id": 3,
+      "id": "3",
       "username": "Scott",
       "score": 1041.6963,
       "accuracy": 0.99,
@@ -28,7 +28,7 @@
       "words": 124
     },
     {
-      "id": 4,
+      "id": "4",
       "username": "Ismael",
       "score": 700.9806,
       "accuracy": 0.97,
@@ -42,6 +42,46 @@
       "score": 65,
       "accuracy": 1,
       "wpm": 65,
+      "words": 6
+    },
+    {
+      "id": "552b",
+      "username": "RMJ",
+      "score": 77,
+      "accuracy": 1,
+      "wpm": 77,
+      "words": 6
+    },
+    {
+      "id": "1d82",
+      "username": "RM",
+      "score": 59,
+      "accuracy": 0.8929,
+      "wpm": 69,
+      "words": 6
+    },
+    {
+      "id": "8619",
+      "username": "hy",
+      "score": 115,
+      "accuracy": 1,
+      "wpm": 115,
+      "words": 6
+    },
+    {
+      "id": "e8dd",
+      "username": "TP",
+      "score": 23,
+      "accuracy": 0.75,
+      "wpm": 40,
+      "words": 6
+    },
+    {
+      "id": "d231",
+      "username": "Jader",
+      "score": 19,
+      "accuracy": 0.9286,
+      "wpm": 23,
       "words": 6
     }
   ]

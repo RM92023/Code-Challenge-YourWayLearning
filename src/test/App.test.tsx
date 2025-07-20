@@ -1,40 +1,35 @@
-// import React from "react";
-// import "@testing-library/jest-dom";
-// import { render, screen } from "@testing-library/react";
-// import App from "../App";
-// import calculateScore from "../calculateScore";
+import { render, screen, fireEvent } from "@testing-library/react";
+import App from "../App";
+import "@testing-library/jest-dom/extend-expect";
 
-// describe("App tests", () => {
-//   describe("Render components", () => {
-//     /**
-//      * TODO: Fix the following test by using the correct text to find the heading (h1)
-//      */
-//     it("App should render and contains the heading", () => {
-//       render(<App />);
+describe("App component", () => {
+  it("renders the main title", () => {
+    render(<App />);
+    const title = screen.getByRole("heading", { name: /typing speed test/i });
+    expect(title).toBeInTheDocument();
+  });
 
-//       const headingText = "Change me!";
-//       const heading = screen.queryByText(headingText);
-//       expect(heading).toBeInTheDocument();
-//     });
+  it("shows the typing input", () => {
+    render(<App />);
+    const input = screen.getByRole("textbox");
+    expect(input).toBeInTheDocument();
+  });
 
-//     /**
-//      * TODO: Implement the following test by using the correct functions
-//      * to find h3 tag and assert the test
-//      */
-//     it("App should render and contains the sub heading", () => {
-//       expect(false).toBeTruthy(); // This should be removed when test is implemented
-//     });
-//   });
+  it("shows cancel button when test starts", async () => {
+    render(<App />);
+    const input = screen.getByRole("textbox");
 
-//   describe("Testing function", () => {
-//     /**
-//      * TODO: Fix the following test by finding the expected score to assert the test
-//      */
-//     it("Test calculateScore", () => {
-//       const score = calculateScore(3, 15, 100, 90);
-//       const expectedScore = 0;
+    // Simular inicio de tipeo
+    fireEvent.change(input, { target: { value: "T" } });
 
-//       expect(score).toBe(expectedScore);
-//     });
-//   });
-// });
+    // Usamos findByRole directamente (mejor práctica)
+    const cancelButton = await screen.findByRole("button", { name: /cancelar test/i });
+    expect(cancelButton).toBeInTheDocument();
+  });
+
+  it("does NOT show 'Test finalizado' initially", () => {
+    render(<App />);
+    const resultText = screen.queryByText(/test finalizado/i);
+    expect(resultText).not.toBeInTheDocument();
+  });
+});

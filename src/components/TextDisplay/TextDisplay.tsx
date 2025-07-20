@@ -1,3 +1,5 @@
+import "./TextDisplay.css";
+
 interface Props {
   targetText?: string;
   userInput: string;
