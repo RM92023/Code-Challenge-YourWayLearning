@@ -6,6 +6,7 @@ import "./App.css";
 import TextDisplay from "./components/TextDisplay";
 import calculateScore from "./utils/calculateScore";
 import SaveScoreModal from "./components/SaveScoreModal";
+import TopScores from "./components/TopScores";
 
 const App = () => {
   const {
@@ -94,6 +95,8 @@ const App = () => {
           setScoreSaved(true);
         }}
       />
+
+      <TopScores />
     </main>
   );
 };

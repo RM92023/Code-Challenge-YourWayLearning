@@ -1,7 +1,7 @@
 {
   "leaderboard": [
     {
-      "id": "1",
+      "id": 1,
       "username": "Charity",
       "score": 505.1667,
       "accuracy": 1,
@@ -10,7 +10,7 @@
       "words": 25
     },
     {
-      "id": "2",
+      "id": 2,
       "username": "Kim",
       "score": 919.0662,
       "accuracy": 0.98,
@@ -19,7 +19,7 @@
       "words": 112
     },
     {
-      "id": "3",
+      "id": 3,
       "username": "Scott",
       "score": 1041.6963,
       "accuracy": 0.99,
@@ -28,7 +28,7 @@
       "words": 124
     },
     {
-      "id": "4",
+      "id": 4,
       "username": "Ismael",
       "score": 700.9806,
       "accuracy": 0.97,
@@ -37,20 +37,12 @@
       "words": 99
     },
     {
-      "id": "ad9e",
-      "username": "RM",
-      "score": 76,
+      "id": "dcd3",
+      "username": "AREM",
+      "score": 65,
       "accuracy": 1,
-      "wpm": 76,
+      "wpm": 65,
       "words": 6
-    },
-    {
-      "id": "0e3a",
-      "score": 85,
-      "accuracy": 1,
-      "wpm": 85,
-      "words": 6,
-      "username": "RMJ"
     }
   ]
 }

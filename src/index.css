@@ -103,3 +103,21 @@ code {
   padding: 0.5rem;
   margin-bottom: 1rem;
 }
+
+.leaderboard {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.leaderboard table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: 90%;
+  max-width: 600px;
+}
+
+.leaderboard th,
+.leaderboard td {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+}
